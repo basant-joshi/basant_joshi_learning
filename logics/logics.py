@@ -133,13 +133,12 @@ Generators
 '''
 Iterator
 '''
-listt = [10,20,30]
-it = iter(listt)
+# listt = [10,20,30]
+# it = iter(listt)
 
-print(next(it))
-print(next(it))
-print(next(it))
-print(next(it))
+# print(next(it))
+# print(next(it))
+# print(next(it))
 ##########################################################################
 '''
 Bubble sort
@@ -153,3 +152,66 @@ Bubble sort
 #             listt[j],listt[j+1] = listt[j+1],listt[j]
 # print("Final list= ", listt)
 ##########################################################################
+'''
+Sort a list of tuple on basis of 2 element(Index 1)
+'''
+# listt = [(10,0),(20,3),(30,1),(5,2)]
+# listt_x = sorted(listt,key=lambda x:x[1])
+# print(listt_x)
+##########################################################################
+'''
+Sort a dictionary by its values
+'''
+# dicti = {
+#     "Ram":1,
+#     "Ravan":10,
+#     "Lakshman":2,
+#     "Bharat":3
+# }
+# new_dict = sorted(dicti,key=lambda x:dicti[x])
+# print(new_dict)
+##########################################################################
+'''
+Class Method :- @classmethod :- Use cls as first parameter
+Static Method :- @statismethod :- Dont use anything
+Instance method :- Use self as first parameter
+'''
+#Class Method
+
+class Student:
+    school_name = "ABC School"
+
+    def __init__(self,name):
+        self.name = name
+    
+    @classmethod
+    def change_name(cls,new_name):
+        cls.school_name = new_name
+
+    @staticmethod
+    def greet():
+        print("Welcome to school")
+
+    #Instance Method
+    def show_details(self):
+        print(self.school_name)
+        
+
+s1 = Student("Basant")
+print(s1.school_name)
+s1.change_name("LBN School") #change_name is class method which is modifying the schhol name
+print(s1.school_name)
+
+s1.greet() # static method which is not mofiying or accessing the class variable
+s1.show_details() # Instance method which can access class variable
+
+##########################################################################
+d = {
+    "A":1,
+    "B":2
+}
+print(d.keys())
+print(d.values())
+print(d.items())
+for k,v in d.items():
+    print(k,v)
