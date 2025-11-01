@@ -206,12 +206,33 @@ s1.greet() # static method which is not mofiying or accessing the class variable
 s1.show_details() # Instance method which can access class variable
 
 ##########################################################################
-d = {
-    "A":1,
-    "B":2
+nested_dict = {
+    "name": "Basant",
+    "details": {
+        "age": 25,
+        "address": {
+            "city": "Delhi",
+            "pin": 110011
+        },
+        "skills": {
+            "python": "intermediate",
+            "testing": {
+                "api": "good",
+                "selenium": "expert"
+            }
+        }
+    }
 }
-print(d.keys())
-print(d.values())
-print(d.items())
-for k,v in d.items():
-    print(k,v)
+
+def flatten(d, parent_key='', sep='.'):
+    flat = {}
+    for key, value in d.items():
+        new_key = f"{parent_key}{sep}{key}" if parent_key else key
+        if isinstance(value, dict):
+            flat.update(flatten(value, new_key, sep=sep))
+        else:
+            flat[new_key] = value
+    return flat
+
+print(flatten(nested_dict))
+        
